@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "JohnDoe",
+      "email": "johndoe@example.com",
+      "password": "hashedPassword",
+      "quizzes": [
+        {
+          "id": "1",
+          "title": "Quiz 1",
+          "score": 80
+        },
+        {
+          "id": "2",
+          "title": "Quiz 2",
+          "score": 50
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "username": "JaneDoe",
+      "email": "janedoe@example.com",
+      "password": "hashedPassword",
+      "quizzes": [
+        {
+          "id": "1",
+          "title": "Quiz 1",
+          "score": 90
+        },
+        {
+          "id": "2",
+          "title": "Quiz 2",
+          "score": 60
+        }
+      ]
+    }
+  ]
+}
