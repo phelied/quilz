@@ -6,13 +6,13 @@
       "password": "hashedPassword",
       "quizzes": [
         {
-          "id": "1",
-          "title": "Quiz 1",
+          "id": 1,
+          "quiz_id": 1,
           "score": 80
         },
         {
-          "id": "2",
-          "title": "Quiz 2",
+          "id": 2,
+          "quiz_id": 2,
           "score": 50
         }
       ]
