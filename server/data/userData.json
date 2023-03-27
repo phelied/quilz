@@ -2,7 +2,6 @@
   "users": [
     {
       "id": "1",
-      "username": "JohnDoe",
       "email": "johndoe@example.com",
       "password": "hashedPassword",
       "quizzes": [
@@ -20,7 +19,6 @@
     },
     {
       "id": "2",
-      "username": "JaneDoe",
       "email": "janedoe@example.com",
       "password": "hashedPassword",
       "quizzes": [
