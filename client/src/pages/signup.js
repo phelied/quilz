@@ -6,7 +6,12 @@ const SignUp = () => {
 
 
     const handleSubmit = (email, password) => {
-        axios.post('localhost:3000/signin', { email, password })
+        console.log(email, password)
+        axios.post('http://localhost:3000/signup', { email, password }, {
+            headers: {
+                'Origin': 'http://localhost:3001'
+            }
+        })
             .then(response => {
                 console.log(response)
                 // Stocke le jeton d'authentification dans le stockage local
@@ -22,7 +27,7 @@ const SignUp = () => {
 
     return (
         <>
-            <AuthForm onSubmit={handleSubmit}  isSignUp={true}/>
+            <AuthForm onSubmit={handleSubmit} isSignUp={true} />
         </>
     );
 };

@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Character from "../assets/images/character-loginPage.png";
 import { Link } from "react-router-dom";
-import axios from 'axios';
 
 const AuthForm = ({ onSubmit, isSignUp }) => {
     const [email, setEmail] = useState('');

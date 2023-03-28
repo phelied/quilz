@@ -8,7 +8,7 @@ const UserController = {
     signup: async (req, res) => {
         try {
             const { email, password } = req.body;
-
+            console.log(req.body)
             // Vérifie si l'utilisateur existe déjà
             const userExists = userData.users.find((user) => user.email === email);
             if (userExists) {
