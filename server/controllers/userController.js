@@ -40,7 +40,7 @@ const UserController = {
             res.status(500).send('Erreur serveur');
         }
     },
-    login: async (req, res) => {
+    signin: async (req, res) => {
         try {
             const { email, password } = req.body;
 
@@ -64,6 +64,18 @@ const UserController = {
         } catch (error) {
             console.error(error);
             res.status(500).send('Erreur serveur');
+        }
+    },
+    users: async (req, res) => {
+        res.json(userData);
+    },
+    profile: async (req, res) => {
+        const userId = req.user.id;
+        const user = userData.users.find((user) => user.id === userId);
+        if (user) {
+            res.json(user);
+        } else {
+            res.status(404).send('Utilisateur introuvable');
         }
     }
 }
