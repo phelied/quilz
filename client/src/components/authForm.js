@@ -1,31 +1,39 @@
+
 import React, { useState } from "react";
 import styled from "styled-components";
 import Character from "../assets/images/character-loginPage.png";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import AuthForm from "../components/authForm";
 
-const SignUp = () => {
+const AuthForm = ({ onSubmit, isSignUp }) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
 
-    const handleSubmit = (email, password) => {
-        axios.post('localhost:3000/signin', { email, password })
-            .then(response => {
-                console.log(response)
-                // Stocke le jeton d'authentification dans le stockage local
-                localStorage.setItem('token', response.data.token);
-                // Redirige l'utilisateur vers la page protégée
-                window.location.href = '/profile';
-            })
-            .catch(error => {
-                console.log(error)
-                // setError('Identifiants invalides');
-            });
-    }
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        onSubmit(email, password);
+    };
 
     return (
         <LoginContainer>
-            <AuthForm onSubmit={handleSubmit}  isSignUp={true}/>
+            <div className="container-image">
+                <img src={Character} alt="login" />
+            </div>
+            <FormContainer onSubmit={handleSubmit}>
+                <Introduction>
+                    <h2>Joue à <br />des quiz ! </h2>
+                    <p>
+                        Teste tes connaissances sur des sujets de culture générale comme sur l'actualité. Un nouveau quiz par jour à découvrir !
+                    </p>
+                </Introduction>
+                <Form>
+                    <input type="email" onChange={event => setEmail(event.target.value)} value={email} name="email" id="email" placeholder="Email" />
+                    <input type="password" onChange={event => setPassword(event.target.value)} value={password} name="password" id="password" placeholder="Password" />
+                    <button type="submit">{isSignUp ? 'Sign up' : 'Log in'}</button>
+                </Form>
+                {isSignUp ? (<span>You already have an account ? <Link to="/signin"> Sign in </Link></span>) : (<span>Dont't have an account ? <Link to="/signup"> Sign up for free </Link></span>)}
+            </FormContainer>
         </LoginContainer>
     );
 };
@@ -102,4 +110,4 @@ const Form = styled.form`
     }
 `;
 
-export default SignUp;
+export default AuthForm;

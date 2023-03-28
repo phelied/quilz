@@ -3,14 +3,14 @@ import styled from "styled-components";
 import Character from "../assets/images/character-loginPage.png";
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import AuthForm from "../components/authForm";
 
-const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState(null);
+const path = window.location.pathname;
+console.log(path)
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+const SignIn = () => {
+
+    const handleSubmit = (email, password) => {
         axios.post('localhost:3000/signin', { email, password })
             .then(response => {
                 console.log(response)
@@ -21,29 +21,13 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error)
-                setError('Identifiants invalides');
+                // setError('Identifiants invalides');
             });
     }
 
     return (
         <LoginContainer>
-            <div className="container-image">
-                <img src={Character} alt="login" />
-            </div>
-            <FormContainer>
-                <Introduction>
-                    <h2>Joue à <br />des quiz ! </h2>
-                    <p>
-                        Teste tes connaissances sur des sujets de culture générale comme sur l'actualité. Un nouveau quiz par jour à découvrir !
-                    </p>
-                </Introduction>
-                <Form>
-                    <input type="email" onChange={event => setEmail(event.target.value)} value={email} name="email" id="email" placeholder="Email" />
-                    <input type="password" onChange={event => setPassword(event.target.value)} value={password} name="password" id="password" placeholder="Password" />
-                    <button type="submit">Log in</button>
-                </Form>
-                <span>Dont't have an account ? <Link to="/signIn"> Sign up for free </Link></span>
-            </FormContainer>
+            <AuthForm onSubmit={handleSubmit} />
         </LoginContainer>
     );
 };
@@ -120,4 +104,4 @@ const Form = styled.form`
     }
 `;
 
-export default Login;
+export default SignIn;
