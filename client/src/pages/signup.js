@@ -9,7 +9,6 @@ const SignUp = () => {
     const navigate = useNavigate();
 
     const handleSubmit = (email, password) => {
-        console.log(email, password)
         axios.post('http://localhost:3000/signup', { email, password }, {
             headers: {
                 'Origin': 'http://localhost:3001'
@@ -18,7 +17,7 @@ const SignUp = () => {
             .then(response => {
                 console.log(response)
                 // Stocke le jeton d'authentification dans le stockage local
-                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('token', response.data.accessToken);
                 // Redirige l'utilisateur vers la page protégée
                 navigate('/profile');
             })

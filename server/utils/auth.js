@@ -1,18 +1,23 @@
 const passportJWT = require('passport-jwt');
 const ExtractJWT = passportJWT.ExtractJwt;
 const JWTStrategy = passportJWT.Strategy;
-const users = require('../data/userData.json');
 const passport = require('passport');
+const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
+const fs = require('fs');
+const path = require('path');
 
 
 // Configuration de la stratégie d'authentification JWT
 passport.use(new JWTStrategy({
-    secretOrKey: 'your_jwt_secret',
-    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken()
+    secretOrKey: ACCESS_TOKEN_SECRET,
+    jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme('Bearer')
 },
     async (token, done) => {
         try {
-            const user = users.find(u => u.id === token.user.id);
+            const userDataFilePath = path.join(__dirname, '../data/userData.json');
+            const rawData = fs.readFileSync(userDataFilePath);
+            const data = JSON.parse(rawData);
+            const user = data.users.find(u => u.email === token.email);
             if (!user) {
                 return done(null, false, { message: 'Utilisateur introuvable' }); // Si l'utilisateur n'existe pas, renvoyer une réponse avec un message d'erreur
             }

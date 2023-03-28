@@ -1,6 +1,12 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const userData = require('../data/UserData.json');
+const fs = require('fs');
+const path = require('path');
+
+const userDataFilePath = path.join(__dirname, '../data/userData.json');
+const rawData = fs.readFileSync(userDataFilePath);
+const data = JSON.parse(rawData);
 
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 
@@ -8,9 +14,8 @@ const UserController = {
     signup: async (req, res) => {
         try {
             const { email, password } = req.body;
-            console.log(req.body)
             // Vérifie si l'utilisateur existe déjà
-            const userExists = userData.users.find((user) => user.email === email);
+            const userExists = data.users.find((user) => user.email === email);
             if (userExists) {
                 return res.status(409).send('Cet email est déjà utilisé');
             }
@@ -21,17 +26,19 @@ const UserController = {
 
             // Crée un nouvel utilisateur avec un ID unique
             const newUser = {
-                id: (userData.users.length + 1).toString(),
+                id: (data.users.length + 1).toString(),
                 email: email,
                 password: hashedPassword,
                 quizzes: []
             };
 
             // Ajoute le nouvel utilisateur au tableau des utilisateurs
-            userData.users.push(newUser);
+            data.users.push(newUser);
+
+            fs.writeFileSync(userDataFilePath, JSON.stringify(data));
 
             // Génère un jeton d'accès pour l'utilisateur
-            const accessToken = jwt.sign({ id: newUser.id }, ACCESS_TOKEN_SECRET);
+            const accessToken = jwt.sign({ id: newUser.id, email: newUser.email }, ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
 
             // Envoie la réponse avec le jeton d'accès dans le corps de la réponse
             res.status(201).json({ accessToken: accessToken });
@@ -57,7 +64,7 @@ const UserController = {
             }
 
             // Génère un jeton d'accès pour l'utilisateur
-            const accessToken = jwt.sign({ id: user.id }, ACCESS_TOKEN_SECRET);
+            const accessToken = jwt.sign({ id: user.id }, ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
 
             // Envoie la réponse avec le jeton d'accès dans le corps de la réponse
             res.status(200).json({ accessToken: accessToken });
@@ -69,9 +76,13 @@ const UserController = {
     users: async (req, res) => {
         res.json(userData);
     },
+
     profile: async (req, res) => {
+        const userDataFilePath = path.join(__dirname, '../data/userData.json');
+        const rawData = fs.readFileSync(userDataFilePath);
+        const data = JSON.parse(rawData);
         const userId = req.user.id;
-        const user = userData.users.find((user) => user.id === userId);
+        const user = data.users.find((user) => user.id === userId);
         if (user) {
             res.json(user);
         } else {
