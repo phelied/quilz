@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import AuthForm from "../components/authForm";
+import { useNavigate } from 'react-router-dom';
+
 
 const SignUp = () => {
-
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = (email, password) => {
         console.log(email, password)
@@ -17,11 +20,14 @@ const SignUp = () => {
                 // Stocke le jeton d'authentification dans le stockage local
                 localStorage.setItem('token', response.data.token);
                 // Redirige l'utilisateur vers la page protégée
-                window.location.href = '/profile';
+                navigate('/profile');
             })
             .catch(error => {
-                console.log(error)
-                // setError('Identifiants invalides');
+                if (error.response.status === 401) {
+                    setError('Email ou mot de passe incorrect');
+                } else {
+                    setError('Une erreur s\'est produite, veuillez réessayer plus tard');
+                }
             });
     }
 

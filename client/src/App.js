@@ -24,8 +24,14 @@ export default function App() {
               </PrivateRoute>
             }
           />
-          <Route path="/quiz/:id" element={<PrivateRoute element={<Quiz />} />} />
-          <Route path="profil" element={<Profile />} />
+          <Route
+            path="profile"
+            element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            }
+          />
           <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>

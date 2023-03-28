@@ -4,6 +4,7 @@ import FontStyles from "../utils/fontStyles";
 
 
 const Layout = () => {
+    const isAuthenticated = !!localStorage.getItem('token');
     return (
         <AppContainer>
             <FontStyles />
@@ -14,12 +15,20 @@ const Layout = () => {
                         <li>
                             <Link to="/">Quizzes</Link>
                         </li>
-                        <li>
-                            <Link to="/signin">SignIn</Link>
-                        </li>
-                        <li>
-                            <Link to="/signup">SignUp</Link>
-                        </li>
+                        {isAuthenticated ? (
+                            <li>
+                                <Link to="/profile">Profile</Link>
+                            </li>
+                        ) : (
+                            <>
+                                <li>
+                                    <Link to="/signin">SignIn</Link>
+                                </li>
+                                <li>
+                                    <Link to="/signup">SignUp</Link>
+                                </li>
+                            </>
+                        )}
                     </ul>
                 </NavLink>
             </Header>
@@ -35,7 +44,6 @@ const Header = styled.header`
     color: #fff;
 `;
 const AppContainer = styled.div`
-    
 `;
 
 const NavLink = styled.nav`

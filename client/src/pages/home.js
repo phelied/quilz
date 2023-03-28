@@ -7,13 +7,6 @@ const Home = () => {
     const [subjectquizzes, setSubjectQuizzes] = useState([]);
     const navigate = useNavigate();
 
-    const quizData = [
-        { id: 1, subject: "Mathématiques" },
-        { id: 2, subject: "Histoire" },
-        { id: 3, subject: "Géographie" },
-        { id: 4, subject: "Science" },
-    ];
-
     const handleQuizClick = (id) => {
         navigate(`/quiz/${id}`);
     };
