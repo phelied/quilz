@@ -49,10 +49,13 @@ const UserController = {
     },
     signin: async (req, res) => {
         try {
+            const userDataFilePath = path.join(__dirname, '../data/userData.json');
+            const rawData = fs.readFileSync(userDataFilePath);
+            const data = JSON.parse(rawData);
             const { email, password } = req.body;
 
             // Vérifie si l'utilisateur existe déjà
-            const user = userData.users.find((user) => user.email === email);
+            const user = data.users.find((user) => user.email === email);
             if (!user) {
                 return res.status(401).send('Identifiant ou mot de passe incorrect');
             }
@@ -64,7 +67,7 @@ const UserController = {
             }
 
             // Génère un jeton d'accès pour l'utilisateur
-            const accessToken = jwt.sign({ id: user.id }, ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
+            const accessToken = jwt.sign({ id: user.id, email: user.email }, ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
 
             // Envoie la réponse avec le jeton d'accès dans le corps de la réponse
             res.status(200).json({ accessToken: accessToken });
@@ -73,6 +76,7 @@ const UserController = {
             res.status(500).send('Erreur serveur');
         }
     },
+
     users: async (req, res) => {
         res.json(userData);
     },
