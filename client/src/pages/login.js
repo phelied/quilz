@@ -1,8 +1,30 @@
+import React, { useState } from "react";
 import styled from "styled-components";
 import Character from "../assets/images/character-loginPage.png";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState(null);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        axios.post('localhost:3000/signin', { email, password })
+            .then(response => {
+                console.log(response)
+                // Stocke le jeton d'authentification dans le stockage local
+                localStorage.setItem('token', response.data.token);
+                // Redirige l'utilisateur vers la page protégée
+                window.location.href = '/profile';
+            })
+            .catch(error => {
+                console.log(error)
+                setError('Identifiants invalides');
+            });
+    }
+
     return (
         <LoginContainer>
             <div className="container-image">
@@ -16,8 +38,8 @@ const Login = () => {
                     </p>
                 </Introduction>
                 <Form>
-                    <input type="email" name="email" id="email" placeholder="Email" />
-                    <input type="password" name="password" id="password" placeholder="Password" />
+                    <input type="email" onChange={event => setEmail(event.target.value)} value={email} name="email" id="email" placeholder="Email" />
+                    <input type="password" onChange={event => setPassword(event.target.value)} value={password} name="password" id="password" placeholder="Password" />
                     <button type="submit">Log in</button>
                 </Form>
                 <span>Dont't have an account ? <Link to="/signIn"> Sign up for free </Link></span>
