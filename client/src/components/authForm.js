@@ -3,15 +3,27 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Character from "../assets/images/character-loginPage.png";
 import { Link } from "react-router-dom";
+import { useForm } from 'react-hook-form';
 
 const AuthForm = ({ onSubmit, isSignUp }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { register, formState: { errors }, handleSubmit } = useForm({
+        mode: 'onBlur',
+        defaultValues: {
+            email: '',
+            password: '',
+        },
+    });
 
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        onSubmit(email, password);
+    // const handleSubmi = (event) => {
+    //     event.preventDefault();
+    //     onSubmit(email, password);
+    // };
+
+    const onSubmitForm = (data) => {
+        onSubmit(data.email, data.password);
     };
 
     return (
@@ -19,7 +31,7 @@ const AuthForm = ({ onSubmit, isSignUp }) => {
             <div className="container-image">
                 <img src={Character} alt="login" />
             </div>
-            <FormContainer onSubmit={handleSubmit}>
+            <FormContainer onSubmit={handleSubmit(onSubmitForm)}>
                 <Introduction>
                     <h2>Joue à <br />des quiz ! </h2>
                     <p>
@@ -27,8 +39,31 @@ const AuthForm = ({ onSubmit, isSignUp }) => {
                     </p>
                 </Introduction>
                 <Form>
-                    <input type="email" onChange={event => setEmail(event.target.value)} value={email} name="email" id="email" placeholder="Email" />
-                    <input type="password" onChange={event => setPassword(event.target.value)} value={password} name="password" id="password" placeholder="Password" />
+                    <input type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Email"
+                        {...register("email", {
+                            required: "Email is required",
+                            pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: "Invalid email address"
+                            }
+                        })} />
+                        {console.log(errors)}
+                    {errors && errors.email && errors.email && <span>{errors.email.message}</span>}
+                    <input type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Password"
+                        {...register('password', {
+                            required: "Password is required",
+                            minLength: {
+                                value: 8,
+                                message: "Password must have at least 8 characters"
+                            }
+                        })} />
+                    {errors && errors.password && <span>{errors.password.message}</span>}
                     <button type="submit">{isSignUp ? 'Sign up' : 'Log in'}</button>
                 </Form>
                 {isSignUp ? (<span>You already have an account ? <Link to="/signin"> Sign in </Link></span>) : (<span>Dont't have an account ? <Link to="/signup"> Sign up for free </Link></span>)}

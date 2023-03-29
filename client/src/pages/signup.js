@@ -9,11 +9,7 @@ const SignUp = () => {
     const navigate = useNavigate();
 
     const handleSubmit = (email, password) => {
-        axios.post('http://localhost:3000/signup', { email, password }, {
-            headers: {
-                'Origin': 'http://localhost:3001'
-            }
-        })
+        axios.post('http://localhost:3000/signup', { email, password })
             .then(response => {
                 console.log(response)
                 // Stocke le jeton d'authentification dans le stockage local
