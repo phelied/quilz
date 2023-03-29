@@ -68,7 +68,7 @@ const UserController = {
 
             // Génère un jeton d'accès pour l'utilisateur
             const accessToken = jwt.sign({ id: user.id, email: user.email }, ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
-
+            console.log('back', accessToken)
             // Envoie la réponse avec le jeton d'accès dans le corps de la réponse
             res.status(200).json({ accessToken: accessToken });
         } catch (error) {

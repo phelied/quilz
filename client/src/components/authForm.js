@@ -50,7 +50,6 @@ const AuthForm = ({ onSubmit, isSignUp }) => {
                                 message: "Invalid email address"
                             }
                         })} />
-                        {console.log(errors)}
                     {errors && errors.email && errors.email && <span>{errors.email.message}</span>}
                     <input type="password"
                         name="password"
