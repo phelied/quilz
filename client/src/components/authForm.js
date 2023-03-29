@@ -114,19 +114,27 @@ const Form = styled.form`
     display: flex;
     flex-direction: column;
     border: none;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
 
     & input {
-        height: 50px;
+        border-radius: 10px;
+        outline: 2px solid #FEBF00;
+        border: 0;
+        background-color: #e2e2e2;
+        outline-offset: 3px;
+        padding: 10px 1rem;
+        transition: 0.25s;
         margin: 0.5rem 0;
-        padding: 0 1rem;
-        font-size: 1.25rem;
-        color: black;
-        border: 1px solid black;
-        border-radius: 0.75rem;
     }
 
-    & input::placeholder {
+    & input:focus {
+        outline-offset: 5px;
+        background-color: #fff
+      }
 
+    & input::placeholder {
         color: black;
     }
 

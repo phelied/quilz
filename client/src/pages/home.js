@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import API from "../utils/API";
+import CardItem from "../components/cardItem";
 
 const Home = () => {
     const [subjectquizzes, setSubjectQuizzes] = useState([]);
-    const navigate = useNavigate();
 
-    const handleQuizClick = (id) => {
-        navigate(`/quiz/${id}`);
-    };
 
     useEffect(() => {
         API.getListQuizzes().then((res) => {
@@ -21,11 +17,8 @@ const Home = () => {
         <Wrapper>
             <Title>Quiz disponibles</Title>
             <List>
-                {console.log(subjectquizzes)}
                 {subjectquizzes && subjectquizzes.length !== 0 && (subjectquizzes.map((quiz) => (
-                    <ListItem key={quiz.id} onClick={() => handleQuizClick(quiz.id)}>
-                        {quiz.title}
-                    </ListItem>
+                    <CardItem quiz={quiz} />
                 )))}
             </List>
         </Wrapper>
@@ -35,7 +28,6 @@ const Home = () => {
 const Wrapper = styled.div`
   background-color: #ffaa7f;
   padding: 20px;
-  border-radius: 10px;
   box-shadow: 2px 2px 5px #9c3c3c;
 `;
 
@@ -47,6 +39,8 @@ const Title = styled.h2`
 const List = styled.ul`
   list-style: none;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const ListItem = styled.li`
