@@ -39,6 +39,26 @@ const API = {
             console.error(error);
         }
     },
+    dispatchResult: async (id, token, result) => {
+        try {
+            const response = await axios({
+                method: 'POST',
+                url: "http://localhost:3000/result",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': `bearer ${token}`
+                },
+                data: {
+                    id: id,
+                    result: result
+                }
+            })
+            return (response);
+        } catch (error) {
+            console.error(error);
+        }
+    }
 }
 
 export default API;

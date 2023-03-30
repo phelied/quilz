@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import API from "../utils/API";
+import { useParams } from 'react-router-dom';
 
 const Quiz = () => {
     const [listQuestions, setListQuestions] = useState([]);
     const token = localStorage.getItem('token');
+    const { id } = useParams();
 
     const [activeQuestion, setActiveQuestion] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState('');
@@ -21,10 +23,10 @@ const Quiz = () => {
 
 
     useEffect(() => {
-        API.getQuizById(1, token).then((res) => {
+        API.getQuizById(id, token).then((res) => {
             setListQuestions(res.data);
         });
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         if (listQuestions && listQuestions.length !== 0) {
@@ -50,6 +52,8 @@ const Quiz = () => {
         } else {
             setActiveQuestion(0);
             setShowResult(true);
+            API.dispatchResult(id, token, result);
+            console.log(result)
         }
     };
 

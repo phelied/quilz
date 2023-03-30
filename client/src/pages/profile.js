@@ -7,12 +7,12 @@ const Profile = () => {
 
     useEffect(() => {
         API.getUser(token).then((res) => {
-            // console.log(res)
-            setUser(res);
+            console.log(res)
+            setUser(res.data);
         });
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    return (<>Profile</>);
+    return (<>{user && user.length !== 0 && <span>{user.email}</span>}</>);
 };
 
 export default Profile;

@@ -74,8 +74,23 @@ const UserController = {
         }
     },
 
-    users: async (req, res) => {
-        res.json(userData);
+    result: async (req, res) => {
+        // console.log(req.body, req.data)
+        const userDataFilePath = path.join(__dirname, '../data/userData.json');
+        const rawData = fs.readFileSync(userDataFilePath);
+        const data = JSON.parse(rawData);
+        const userId = req.user.id;
+        const user = data.users.find((user) => user.id === userId);
+        if (user) {
+            const quizIndex = user.quizzes.findIndex((quiz) => quiz.id === req.body.id);
+            if (quizIndex > -1) {
+                // Quiz already exists, update the score
+                user.quizzes[quizIndex].score = req.body.result.score;
+            } else {
+                // Quiz does not exist, add it
+                user.quizzes.push({ id: req.body.id, score: req.body.result.score });
+            }
+        }
     },
 
     profile: async (req, res) => {

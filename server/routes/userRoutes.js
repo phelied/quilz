@@ -23,6 +23,7 @@ router.post('/signin', validateUserInput, UserController.signin);
 // Route that requires authentication using token
 router.get('/profile', passport.authenticate('jwt', { session: false }), UserController.profile);
 
+// Route that requires authentication using token
+router.post('/result', passport.authenticate('jwt', { session: false }), UserController.result);
 
-router.get('/users', UserController.users);
 module.exports = router;

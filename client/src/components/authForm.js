@@ -31,14 +31,14 @@ const AuthForm = ({ onSubmit, isSignUp }) => {
                     </p>
                 </Introduction>
                 <Form>
-                    <p class="title">Register </p>
-                    <p class="message">{isSignUp ? 'Signup now and get full access to our app.' : ' Signin now and get full access to our app.'} </p>
+                    <p className="title">Register </p>
+                    <p className="message">{isSignUp ? 'Signup now and get full access to our app.' : ' Signin now and get full access to our app.'} </p>
                     <label>
                         <input type="email"
                             id="email"
                             name="email"
                             placeholder=""
-                            class='input'
+                            className='input'
                             {...register("email", {
                                 required: "Email is required",
                                 pattern: {
@@ -48,13 +48,13 @@ const AuthForm = ({ onSubmit, isSignUp }) => {
                             })} />
                         <span>Email</span>
                     </label>
-                    {errors && errors.email && errors.email && <span class='error-message'>{errors.email.message}</span>}
+                    {errors && errors.email && errors.email && <span className='error-message'>{errors.email.message}</span>}
                     <label>
                         <input type="password"
                             name="password"
                             id="password"
                             placeholder=""
-                            class='input'
+                            className='input'
                             {...register('password', {
                                 required: "Password is required",
                                 minLength: {
@@ -64,10 +64,10 @@ const AuthForm = ({ onSubmit, isSignUp }) => {
                             })} />
                         <span>Password</span>
                     </label>
-                    {errors && errors.password && <span class='error-message'>{errors.password.message}</span>}
-                    <button class="submit" type="submit">{isSignUp ? 'Sign up' : 'Log in'}</button>
+                    {errors && errors.password && <span className='error-message'>{errors.password.message}</span>}
+                    <button className="submit" type="submit">{isSignUp ? 'Sign up' : 'Log in'}</button>
                 </Form>
-                {isSignUp ? (<p class="signin">Already have an acount ?  <Link to="/signin"> Sign in </Link></p>) : (<p class="signin">Already have an acount ?   <Link to="/signup"> Sign up for free </Link></p>)}
+                {isSignUp ? (<p className="signin">Already have an acount ?  <Link to="/signin"> Sign in </Link></p>) : (<p className="signin">Already have an acount ?   <Link to="/signup"> Sign up for free </Link></p>)}
             </FormContainer>
         </LoginContainer>
     );
@@ -205,7 +205,7 @@ const Form = styled.form`
   & label .input + span {
     position: absolute;
     left: 10px;
-    top: 15px;
+    top: 26px;
     color: grey;
     font-size: 0.9em;
     cursor: text;
