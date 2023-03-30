@@ -1,13 +1,11 @@
 
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Character from "../assets/images/character-loginPage.png";
 import { Link } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 
 const AuthForm = ({ onSubmit, isSignUp }) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const { register, formState: { errors }, handleSubmit } = useForm({
         mode: 'onBlur',
         defaultValues: {
@@ -15,12 +13,6 @@ const AuthForm = ({ onSubmit, isSignUp }) => {
             password: '',
         },
     });
-
-
-    // const handleSubmi = (event) => {
-    //     event.preventDefault();
-    //     onSubmit(email, password);
-    // };
 
     const onSubmitForm = (data) => {
         onSubmit(data.email, data.password);
@@ -33,39 +25,49 @@ const AuthForm = ({ onSubmit, isSignUp }) => {
             </div>
             <FormContainer onSubmit={handleSubmit(onSubmitForm)}>
                 <Introduction>
-                    <h2>Joue à <br />des quiz ! </h2>
+                    <h2>Play quizzes!<br /></h2>
                     <p>
-                        Teste tes connaissances sur des sujets de culture générale comme sur l'actualité. Un nouveau quiz par jour à découvrir !
+                    Test your knowledge on topics of general culture and current events. Discover a new quiz every day!
                     </p>
                 </Introduction>
                 <Form>
-                    <input type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Email"
-                        {...register("email", {
-                            required: "Email is required",
-                            pattern: {
-                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                message: "Invalid email address"
-                            }
-                        })} />
-                    {errors && errors.email && errors.email && <span>{errors.email.message}</span>}
-                    <input type="password"
-                        name="password"
-                        id="password"
-                        placeholder="Password"
-                        {...register('password', {
-                            required: "Password is required",
-                            minLength: {
-                                value: 8,
-                                message: "Password must have at least 8 characters"
-                            }
-                        })} />
-                    {errors && errors.password && <span>{errors.password.message}</span>}
-                    <button type="submit">{isSignUp ? 'Sign up' : 'Log in'}</button>
+                    <p class="title">Register </p>
+                    <p class="message">{isSignUp ? 'Signup now and get full access to our app.' : ' Signin now and get full access to our app.'} </p>
+                    <label>
+                        <input type="email"
+                            id="email"
+                            name="email"
+                            placeholder=""
+                            class='input'
+                            {...register("email", {
+                                required: "Email is required",
+                                pattern: {
+                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                    message: "Invalid email address"
+                                }
+                            })} />
+                        <span>Email</span>
+                    </label>
+                    {errors && errors.email && errors.email && <span class='error-message'>{errors.email.message}</span>}
+                    <label>
+                        <input type="password"
+                            name="password"
+                            id="password"
+                            placeholder=""
+                            class='input'
+                            {...register('password', {
+                                required: "Password is required",
+                                minLength: {
+                                    value: 8,
+                                    message: "Password must have at least 8 characters"
+                                }
+                            })} />
+                        <span>Password</span>
+                    </label>
+                    {errors && errors.password && <span class='error-message'>{errors.password.message}</span>}
+                    <button class="submit" type="submit">{isSignUp ? 'Sign up' : 'Log in'}</button>
                 </Form>
-                {isSignUp ? (<span>You already have an account ? <Link to="/signin"> Sign in </Link></span>) : (<span>Dont't have an account ? <Link to="/signup"> Sign up for free </Link></span>)}
+                {isSignUp ? (<p class="signin">Already have an acount ?  <Link to="/signin"> Sign in </Link></p>) : (<p class="signin">Already have an acount ?   <Link to="/signup"> Sign up for free </Link></p>)}
             </FormContainer>
         </LoginContainer>
     );
@@ -76,8 +78,8 @@ const LoginContainer = styled.main`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
-    background-color: #7380ff;
+    color: black;
+    height: 80vh;
 
     & .container-image {
         height: 50%;
@@ -86,6 +88,11 @@ const LoginContainer = styled.main`
     & img {
         width: 100%;
     }
+
+    @media (min-width: 768px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
 `;
 
 const FormContainer = styled.div`
@@ -113,42 +120,139 @@ const Introduction = styled.div`
 const Form = styled.form`
     display: flex;
     flex-direction: column;
-    border: none;
-    background-color: white;
-    padding: 1rem;
+    gap: 10px;
+    max-width: 350px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    
+  & .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    }
+
+  & .title {
+    font-size: 28px;
+    color: royalblue;
+    font-weight: 600;
+    letter-spacing: -1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+  }
+  
+  & .title::before,.title::after {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    left: 0px;
+    background-color: royalblue;
+  }
+  
+ &  .title::before {
+    width: 18px;
+    height: 18px;
+    background-color: royalblue;
+  }
+  
+ & .title::after {
+    width: 18px;
+    height: 18px;
+    animation: pulse 1s linear infinite;
+  }
+  
+  & .message, .signin {
+    color: rgba(88, 87, 87, 0.822);
+    font-size: 14px;
+  }
+  
+ & .signin {
+    text-align: center;
+  }
+  
+  & .signin a {
+    color: royalblue;
+  }
+  
+  & .signin a:hover {
+    text-decoration: underline royalblue;
+  }
+  
+  & .flex {
+    display: flex;
+    width: 100%;
+    gap: 6px;
+  }
+  
+  & label {
+    position: relative;
+    width: 90%;
+  }
+  
+  & label .input {
+    width: 100%;
+    padding: 10px 10px 20px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
     border-radius: 10px;
-
-    & input {
-        border-radius: 10px;
-        outline: 2px solid #FEBF00;
-        border: 0;
-        background-color: #e2e2e2;
-        outline-offset: 3px;
-        padding: 10px 1rem;
-        transition: 0.25s;
-        margin: 0.5rem 0;
+  }
+  
+  & label .input + span {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    color: grey;
+    font-size: 0.9em;
+    cursor: text;
+    transition: 0.3s ease;
+  }
+  
+  & label .input:placeholder-shown + span {
+    top: 15px;
+    font-size: 0.9em;
+  }
+  
+  & label .input:focus + span,.form label .input:valid + span {
+    top: 30px;
+    font-size: 0.7em;
+    font-weight: 600;
+  }
+  
+  & label .input:valid + span {
+    color:  ;
+  }
+  
+  & .submit {
+    border: none;
+    outline: none;
+    background-color: royalblue;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transform: .3s ease;
+  }
+  
+  & .submit:hover {
+    background-color: rgb(56, 90, 194);
+  }
+  
+  & @keyframes pulse {
+    from {
+      transform: scale(0.9);
+      opacity: 1;
     }
-
-    & input:focus {
-        outline-offset: 5px;
-        background-color: #fff
-      }
-
-    & input::placeholder {
-        color: black;
+  
+    to {
+      transform: scale(1.8);
+      opacity: 0;
     }
-
-    & button {
-        height: 50px;
-        border-radius: 0.75rem;
-        margin: 0.5rem 0;
-        padding: 0 1rem;
-        font-size: 1.25rem;
-        background-color: black;
-        color: white;
-        font-weight: 800;
-        cursor: pointer;
-    }
+  }
 `;
 
 export default AuthForm;

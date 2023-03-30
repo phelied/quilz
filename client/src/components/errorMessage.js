@@ -12,9 +12,14 @@ export default ErrorMessage;
 
 
 const Message = styled.div`
-  background-color: #ffe2e2;
-  color: #ff4b4b;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  color: red;
+  padding:  1px 10px;
+  width: 58%;
+  border-radius: 10px;
+  margin: 0 10px;
+  background-color : #FBC6C2;
+  
+  & p {
+    margin: 10px 0;
+  }
 `;

@@ -5,22 +5,19 @@ const CardItem = ({ quiz }) => {
 
     const navigate = useNavigate();
 
-    console.log(quiz)
-
     const handleQuizClick = (id) => {
         navigate(`/quiz/${id}`);
     };
 
     return (
-        <Card onClick={() => handleQuizClick(quiz.id)} key={quiz.id} className="flip-card">
+        <Card onClick={() => handleQuizClick(quiz.id)} key={quiz.topic} className="flip-card">
             <div className="flip-card-inner">
                 <div className="flip-card-front">
-                    <p className="title">{quiz.title}</p>
+                    <p className="title">{quiz.topic}</p>
                     <p>{ }</p>
                 </div>
                 <div className="flip-card-back">
-                    <p className="title">BACK</p>
-                    <p>Leave Me</p>
+                    <p className="title">{quiz.description}</p>
                 </div>
             </div>
         </Card>
@@ -33,7 +30,7 @@ const Card = styled.div`
     height: 254px;
     perspective: 1000px;
     font-family: sans-serif;
-
+    margin-right: 2rem;
   
   & .title {
     font-size: 1.5em;

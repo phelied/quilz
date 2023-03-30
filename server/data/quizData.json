@@ -2,51 +2,39 @@
   "quizzes": [
     {
       "id": "1",
-      "title": "Quiz 1",
+      "topic": "Animal",
+      "level": "Beginner",
+      "totalQuestions": 2,
       "description": "A quiz about animals",
       "questions": [
         {
           "question": "What is the fastest land animal?",
-          "answers": [
-            { "answer": "Cheetah", "isCorrect": true },
-            { "answer": "Lion", "isCorrect": false },
-            { "answer": "Giraffe", "isCorrect": false },
-            { "answer": "Elephant", "isCorrect": false }
-          ]
+          "answers": ["Cheetah", "Lion", "Giraffe", "Elephant"],
+          "correctAnswer": "Cheetah"
         },
         {
           "question": "What is the tallest animal?",
-          "answers": [
-            { "answer": "Giraffe", "isCorrect": true },
-            { "answer": "Lion", "isCorrect": false },
-            { "answer": "Cheetah", "isCorrect": false },
-            { "answer": "Elephant", "isCorrect": false }
-          ]
+          "answers": ["Giraffe", "Lion", "Cheetah", "Elephant"],
+          "correctAnswer": "Giraffe"
         }
       ]
     },
     {
       "id": "2",
-      "title": "Quiz 2",
+      "topic": "Geography",
+      "level": "Beginner",
+      "totalQuestions": 2,
       "description": "A quiz about geography",
       "questions": [
         {
           "question": "What is the capital of France?",
-          "answers": [
-            { "answer": "Paris", "isCorrect": true },
-            { "answer": "London", "isCorrect": false },
-            { "answer": "Madrid", "isCorrect": false },
-            { "answer": "Berlin", "isCorrect": false }
-          ]
+          "answers": ["Paris", "London", "Madrid", "Berlin"],
+          "correctAnswer": "Paris"
         },
         {
           "question": "What is the largest country in the world?",
-          "answers": [
-            { "answer": "Russia", "isCorrect": true },
-            { "answer": "USA", "isCorrect": false },
-            { "answer": "China", "isCorrect": false },
-            { "answer": "India", "isCorrect": false }
-          ]
+          "answers": ["Russia", "USA", "China", "India"],
+          "correctAnswer": "Russia"
         }
       ]
     }

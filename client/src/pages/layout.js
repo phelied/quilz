@@ -39,9 +39,8 @@ const Layout = () => {
 
 
 const Header = styled.header`
-    background-color: #7380ff;
     height: 50px;
-    color: #fff;
+    color: #000;
 `;
 const AppContainer = styled.div`
 `;
@@ -81,7 +80,7 @@ padding: 0 0.5rem;
 & li > a {
     margin: 0 10px;
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 

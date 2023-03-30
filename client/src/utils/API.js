@@ -8,11 +8,13 @@ const API = {
         } catch (error) {
             console.error(error);
         }
-    }, getQuizById: async (id) => {
+    }, getQuizById: async (id, token) => {
         try {
             const response = await axios.get(`http://localhost:3000/quiz/${id}`, {
                 headers: {
-                    'Origin': 'http://localhost:3001'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': `bearer ${token}`
                 }
             });
             return (response);
