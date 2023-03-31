@@ -5,7 +5,6 @@
       "topic": "Animal",
       "level": "Beginner",
       "totalQuestions": 4,
-      "description": "Test your knowledge about the animal kingdom with this beginner to intermediate level quiz.",
       "questions": [
         {
           "question": "What is the fastest land animal?",
@@ -34,7 +33,6 @@
       "topic": "Geography",
       "level": "Beginner",
       "totalQuestions": 4,
-      "description": "Explore the world with this beginner level quiz about geography.",
       "questions": [
         {
           "question": "What is the capital of France?",
@@ -63,7 +61,6 @@
       "topic": "History",
       "level": "Intermediate",
       "totalQuestions": 5,
-      "description": "Dive into history with this beginner to intermediate level quiz.",
       "questions": [
         {
           "question": "Who was the first president of the United States?",
@@ -112,7 +109,6 @@
       "topic": "Science",
       "level": "Intermediate",
       "totalQuestions": 5,
-      "description": "Discover the wonders of science with this advanced level quiz.",
       "questions": [
         {
           "question": "What is the smallest unit of matter?",
@@ -145,6 +141,107 @@
           "correctAnswer": "Evaporation"
         }
       ]
+    }, 
+    {
+      "id": "5",
+      "topic": "Mathematics",
+      "level": "Intermediate",
+      "totalQuestions": 5,
+      "questions": [
+        {
+          "question": "What is the formula for the area of a circle?",
+          "answers": ["πr", "2πr", "πr^2", "2πr^2"],
+          "correctAnswer": "πr^2"
+        },
+        {
+          "question": "What is the Pythagorean theorem?",
+          "answers": ["a^2 = b^2 + c^2", "a^2 + b^2 = c^2", "a + b = c", "a/b = c/d"],
+          "correctAnswer": "a^2 + b^2 = c^2"
+        },
+        {
+          "question": "What is the slope-intercept form of a linear equation?",
+          "answers": ["y = mx + b", "y = bx + m", "x = my + b", "x = by + m"],
+          "correctAnswer": "y = mx + b"
+        },
+        {
+          "question": "What is the quadratic formula?",
+          "answers": ["x = (-b ± sqrt(b^2 - 4ac)) / 2a", "x = -b / 2a", "x = -b ± sqrt(b^2 - 4ac)", "x = b^2 - 4ac"],
+          "correctAnswer": "x = (-b ± sqrt(b^2 - 4ac)) / 2a"
+        },
+        {
+          "question": "What is the formula for the volume of a rectangular prism?",
+          "answers": ["lwh", "lw + lh + wh", "2lw + 2lh + 2wh", "l^2 + w^2 + h^2"],
+          "correctAnswer": "lwh"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "topic": "Anglais",
+      "level": "Avancé",
+      "totalQuestions": 5,
+      "questions": [
+        {
+          "question": "Which English word means 'the art of effective or persuasive speaking or writing'?",
+          "answers": ["Rhetoric", "Eloquence", "Discourse", "Oratory"],
+          "correctAnswer": "Rhetoric"
+        },
+        {
+          "question": "What is the difference between 'affect' and 'effect'?",
+          "answers": ["'Affect' is a verb and 'effect' is a noun", "'Affect' is a noun and 'effect' is a verb", "'Affect' and 'effect' have the same meaning", "There is no difference between 'affect' and 'effect'"],
+          "correctAnswer": "'Affect' is a verb and 'effect' is a noun"
+        },
+        {
+          "question": "What is the correct order of adjectives in English?",
+          "answers": ["Opinion, size, age, shape, color, origin, material, purpose", "Opinion, size, age, shape, origin, color, material, purpose", "Opinion, size, shape, age, color, origin, material, purpose", "Size, opinion, age, shape, color, origin, material, purpose"],
+          "correctAnswer": "Opinion, size, age, shape, color, origin, material, purpose"
+        },
+        {
+          "question": "What is the past participle of the verb 'go'?",
+          "answers": ["Goed", "Gone", "Went", "Going"],
+          "correctAnswer": "Gone"
+        },
+        {
+          "question": "What is the meaning of the idiom 'barking up the wrong tree'?",
+          "answers": ["To be mistaken about something", "To be lost in thought", "To be barking at a tree", "To be in a difficult situation"],
+          "correctAnswer": "To be mistaken about something"
+        }
+      ]
+    }, 
+    {
+      "id": "7",
+      "topic": "Manga",
+      "level": "Intermediate",
+      "totalQuestions": 5,
+      "description": "Testez vos connaissances sur l'univers des mangas avec ce quiz de niveau intermédiaire.",
+      "questions": [
+        {
+          "question": "Dans le manga \"One Piece\", quel est le fruit du démon de Luffy ?",
+          "answers": ["Le fruit du caoutchoutier", "Le fruit du chêne", "Le fruit de la pierre", "Le fruit du feu"],
+          "correctAnswer": "Le fruit du caoutchoutier"
+        },
+        {
+          "question": "Dans le manga \"Naruto\", quelle est la technique de combat principale de Sasuke ?",
+          "answers": ["Le Byakugan", "Le Rasengan", "Le Chidori", "Le Sharingan"],
+          "correctAnswer": "Le Chidori"
+        },
+        {
+          "question": "Dans le manga \"Dragon Ball\", quelle est la technique spéciale de Sangoku ?",
+          "answers": ["Le Kaméhaméha", "Le Rasengan", "Le Chidori", "Le Sharingan"],
+          "correctAnswer": "Le Kaméhaméha"
+        },
+        {
+          "question": "Dans le manga \"Death Note\", quel est le nom du personnage principal ?",
+          "answers": ["L", "Misa", "Kira", "Light"],
+          "correctAnswer": "Light"
+        },
+        {
+          "question": "Dans le manga \"Fullmetal Alchemist\", quelle est la loi fondamentale de l'alchimie ?",
+          "answers": ["L'échange équivalent", "La force brute", "L'explosion", "Le changement de forme"],
+          "correctAnswer": "L'échange équivalent"
+        }
+      ]
     }
+    
   ]
 }

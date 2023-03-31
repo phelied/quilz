@@ -10,74 +10,48 @@ const CardItem = ({ quiz }) => {
   };
 
   return (
-    <Card onClick={() => handleQuizClick(quiz.id)}>
-      <div className="flip-card-inner">
-        <div className="flip-card-front">
-          <p className="title">{quiz.topic}</p>
-          <p>{quiz.level}</p>
-          <p>Number of questions: {quiz.totalQuestions}</p>
-        </div>
-        <div className="flip-card-back">
-          <p className="title">{quiz.description}</p>
-        </div>
+    <ListItem onClick={() => handleQuizClick(quiz.id)}>
+      <div>
+        <h5>{quiz.topic}</h5>
+        <h6>{quiz.level}</h6>
       </div>
-    </Card>
+      <span>{quiz.totalQuestions}</span>
+    </ListItem>
   );
 };
 
-const Card = styled.div`
-    background-color: transparent;
-    width: 190px;
-    height: 254px;
-    perspective: 1000px;
-    font-family: sans-serif;
-    margin-right: 2rem;
-  
-  & .title {
-    font-size: 1.5em;
-    font-weight: 900;
-    text-align: center;
+const ListItem = styled.li`
+  list-style: none;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  display: flex;
+  background-color: #f8f8f8;
+  justify-content: space-between;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+
+  & h5 {
     margin: 0;
+    font-size: 1rem;
   }
-  
-  & .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-  }
-  
-  &:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-  
-  & .flip-card-front, .flip-card-back {
-    box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
-    position: absolute;
-    display: flex;
+
+  & div {
     flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border: 1px solid coral;
-    border-radius: 1rem;
+    flex-wrap: wrap;
+    align-content: space-around;
   }
-  
-  & .flip-card-front {
-    background: linear-gradient(120deg, bisque 60%, rgb(255, 231, 222) 88%,
-       rgb(255, 211, 195) 40%, rgba(255, 127, 80, 0.603) 48%);
-    color: coral;
+
+  & h6 {
+    font-size: O.5rem;
+    margin: 0;
+    font-weight: 500;
+    color: #818181;
   }
-  
-  & .flip-card-back {
-    background: linear-gradient(120deg, rgb(255, 174, 145) 30%, coral 88%,
-       bisque 40%, rgb(255, 185, 160) 78%);
-    color: white;
-    transform: rotateY(180deg);
+
+  & span {
+    align-self: flex-end;
   }
 `;
 
