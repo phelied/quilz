@@ -116,6 +116,10 @@ const Introduction = styled.div`
         font-size: 3.75rem;
         text-align: center;
         margin: 0;
+        background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+        background-cwlip: text;
+        -webkit-background-clip: text;
+        color: transparent;
     }
 `;
 

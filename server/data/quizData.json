@@ -4,8 +4,8 @@
       "id": "1",
       "topic": "Animal",
       "level": "Beginner",
-      "totalQuestions": 2,
-      "description": "A quiz about animals",
+      "totalQuestions": 4,
+      "description": "Test your knowledge about the animal kingdom with this beginner to intermediate level quiz.",
       "questions": [
         {
           "question": "What is the fastest land animal?",
@@ -16,6 +16,16 @@
           "question": "What is the tallest animal?",
           "answers": ["Giraffe", "Lion", "Cheetah", "Elephant"],
           "correctAnswer": "Giraffe"
+        },
+        {
+          "question": "What is the largest living reptile?",
+          "answers": ["Komodo dragon", "Alligator", "Crocodile", "Iguana"],
+          "correctAnswer": "Saltwater crocodile"
+        },
+        {
+          "question": "What is the only mammal capable of true flight?",
+          "answers": ["Bat", "Flying squirrel", "Bird", "Penguin"],
+          "correctAnswer": "Bat"
         }
       ]
     },
@@ -23,8 +33,8 @@
       "id": "2",
       "topic": "Geography",
       "level": "Beginner",
-      "totalQuestions": 2,
-      "description": "A quiz about geography",
+      "totalQuestions": 4,
+      "description": "Explore the world with this beginner level quiz about geography.",
       "questions": [
         {
           "question": "What is the capital of France?",
@@ -35,6 +45,104 @@
           "question": "What is the largest country in the world?",
           "answers": ["Russia", "USA", "China", "India"],
           "correctAnswer": "Russia"
+        },
+        {
+          "question": "What is the only country to have competed in every Olympic Games?",
+          "answers": ["Greece", "USA", "UK", "France"],
+          "correctAnswer": "Greece"
+        },
+        {
+          "question": "What is the capital city of Australia?",
+          "answers": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+          "correctAnswer": "Canberra"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "topic": "History",
+      "level": "Intermediate",
+      "totalQuestions": 5,
+      "description": "Dive into history with this beginner to intermediate level quiz.",
+      "questions": [
+        {
+          "question": "Who was the first president of the United States?",
+          "answers": [
+            "George Washington",
+            "John Adams",
+            "Thomas Jefferson",
+            "James Madison"
+          ],
+          "correctAnswer": "George Washington"
+        },
+        {
+          "question": "What year did World War I end?",
+          "answers": ["1914", "1917", "1918", "1921"],
+          "correctAnswer": "1918"
+        },
+        {
+          "question": "Which civilization is known for building Machu Picchu?",
+          "answers": ["Mayan", "Aztec", "Incan", "Egyptian"],
+          "correctAnswer": "Incan"
+        },
+        {
+          "question": "What was the main cause of the French Revolution?",
+          "answers": [
+            "Economic crisis",
+            "Political corruption",
+            "Religious conflict",
+            "Social inequality"
+          ],
+          "correctAnswer": "Social inequality"
+        },
+        {
+          "question": "What was the name of the first man to walk on the moon?",
+          "answers": [
+            "Neil Armstrong",
+            "Buzz Aldrin",
+            "Michael Collins",
+            "Alan Shepard"
+          ],
+          "correctAnswer": "Neil Armstrong"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "topic": "Science",
+      "level": "Intermediate",
+      "totalQuestions": 5,
+      "description": "Discover the wonders of science with this advanced level quiz.",
+      "questions": [
+        {
+          "question": "What is the smallest unit of matter?",
+          "answers": ["Atom", "Molecule", "Cell", "Proton"],
+          "correctAnswer": "Atom"
+        },
+        {
+          "question": "What is the process by which plants make their own food?",
+          "answers": [
+            "Photosynthesis",
+            "Respiration",
+            "Digestion",
+            "Fermentation"
+          ],
+          "correctAnswer": "Photosynthesis"
+        },
+        {
+          "question": "What is the chemical symbol for gold?",
+          "answers": ["Au", "Ag", "Cu", "Fe"],
+          "correctAnswer": "Au"
+        },
+        {
+          "question": "What is the name of the largest planet in our solar system?",
+          "answers": ["Earth", "Mars", "Jupiter", "Saturn"],
+          "correctAnswer": "Jupiter"
+        },
+        {
+          "question": "What is the name of the process by which liquid water turns into water vapor?",
+          "answers": ["Melting", "Boiling", "Evaporation", "Condensation"],
+          "correctAnswer": "Evaporation"
         }
       ]
     }
