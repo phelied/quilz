@@ -1,13 +1,11 @@
 <a name="readme-top"></a>
 
-[![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="#">
-    <img src="./public/apple-touch-icon.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Quilz</h3>
@@ -49,13 +47,9 @@
 
 ## About The Project
 
-<img src="https://github.com/phelied/weathy/blob/main/src/assets/images/weathy-screen.png" width="200" height="360">
+This project is a quiz app that allows users to take quizzes and receive scores. It also includes a user authentication system using JSON Web Tokens (JWTs) for secure access to user-specific content.
 
-In this project I created a React weather app, which uses an API from openweathermap to get weather information all over the world and an other API to propose a list of cities in the search bar.
-
-<!-- By default it displays the local weather at Paris. -->
-
-You can use locate button to get weather data at your location. You can also use search to find the current weather at a city, for example London or New York. The app displays local temperature, gives you a brief description and also shows an 3D Design based on the weather and the local hour.
+The app is built with React.js for the front-end and Node.js/Express.js for the back-end. It uses Axios for API requests and stores user data in a JSON file. The app includes features such as error handling, user feedback, and password encryption.
 
 ### Built With
 
@@ -97,15 +91,14 @@ _Below is an example of how you can install and setting up your app._
    ```sh
    node index.js
    ```
-2. Go to client folder and nstall NPM packages
+4. Go to client folder and nstall NPM packages
    ```sh
    cd client
    npm install
    ```
-3. Start server
+5. Start server
    ```sh
    npm start
-   ```
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -114,8 +107,7 @@ _Below is an example of how you can install and setting up your app._
 
 Ophelie Diomar - [LinkedIn][linkedin-url] - opheliediomar@outlook.fr
 
-Project Link: [https://github.com/phelied/weathy](https://github.com/phelied/weathy)
-
+Project Link: [https://github.com/phelied/quilz](https://github.com/phelied/quilz)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
