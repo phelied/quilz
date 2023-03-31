@@ -103,6 +103,12 @@ _Below is an example of how you can install and setting up your app._
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Roadmap
+
+- [ ] Rework on the style
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Contact
 
 Ophelie Diomar - [LinkedIn][linkedin-url] - opheliediomar@outlook.fr
