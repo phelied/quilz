@@ -82,7 +82,7 @@ _Below is an example of how you can install and setting up your app._
    git clone git@github.com:phelied/quilz.git
    ```
 
-2. Go to server folder and nstall NPM packages
+2. Go to server folder and install NPM packages
    ```sh
    cd server
    npm install
@@ -91,7 +91,7 @@ _Below is an example of how you can install and setting up your app._
    ```sh
    node index.js
    ```
-4. Go to client folder and nstall NPM packages
+4. Go to client folder and install NPM packages
    ```sh
    cd client
    npm install
