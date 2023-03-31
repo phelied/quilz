@@ -52,10 +52,14 @@ const Quiz = () => {
         } else {
             setActiveQuestion(0);
             setShowResult(true);
-            API.dispatchResult(id, token, result);
-            console.log(result)
         }
     };
+
+    useEffect(() => {
+        if (showResult) {
+            API.dispatchResult(id, token, result);
+        }
+    }, [showResult]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const onAnswerSelected = (answer, index) => {
         setSelectedAnswerIndex(index);

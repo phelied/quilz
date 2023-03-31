@@ -58,7 +58,7 @@ const Card = styled.div`
     justify-content: center;
     align-items: center;
     transition: filter .2s 1s ease-in-out;
-    font-size: 3.5em;
+    font-size: 1.5em;
     font-weight: bold;
   }
   
