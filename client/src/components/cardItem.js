@@ -3,25 +3,26 @@ import { useNavigate } from "react-router-dom";
 
 const CardItem = ({ quiz }) => {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleQuizClick = (id) => {
-        navigate(`/quiz/${id}`);
-    };
+  const handleQuizClick = (id) => {
+    navigate(`/quiz/${id}`);
+  };
 
-    return (
-        <Card onClick={() => handleQuizClick(quiz.id)} key={quiz.topic} className="flip-card">
-            <div className="flip-card-inner">
-                <div className="flip-card-front">
-                    <p className="title">{quiz.topic}</p>
-                    <p>{ }</p>
-                </div>
-                <div className="flip-card-back">
-                    <p className="title">{quiz.description}</p>
-                </div>
-            </div>
-        </Card>
-    );
+  return (
+    <Card onClick={() => handleQuizClick(quiz.id)} key={quiz.topic}>
+      <div className="flip-card-inner">
+        <div className="flip-card-front">
+          <p className="title">{quiz.topic}</p>
+          <p>{quiz.level}</p>
+          <p>Number of questions: {quiz.totalQuestions}</p>
+        </div>
+        <div className="flip-card-back">
+          <p className="title">{quiz.description}</p>
+        </div>
+      </div>
+    </Card>
+  );
 };
 
 const Card = styled.div`

@@ -15,23 +15,23 @@ app.use(function(req, res, next) {
   });
 
 
-// Middleware pour parser le JSON dans les requêtes POST
+// Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
 
-// Middleware pour parser le JSON dans les requêtes POST
+// Middleware for authentication
 app.use(passport.initialize());
 
 // Routes
 app.use('/', quizRoutes);
 app.use('/', userRoutes);
 
-// Gestionnaire d'erreurs
+// Middleware for handling errors
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
 });
 
-// Démarrer le serveur
+// Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 

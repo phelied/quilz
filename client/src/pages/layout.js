@@ -1,24 +1,39 @@
 import { Outlet, Link } from "react-router-dom";
 import styled from "styled-components";
 import FontStyles from "../utils/fontStyles";
+import { useEffect, useState } from "react";
 
 
 const Layout = () => {
-    const isAuthenticated = !!localStorage.getItem('token');
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    useEffect(() => {
+        setIsAuthenticated(localStorage.getItem('token') ? true : false);
+    }, []);
+
+    const deleteItem = (itemKey) =>{
+        localStorage.removeItem(itemKey);
+      }
+
     return (
         <AppContainer>
             <FontStyles />
             <Header>
                 <NavLink>
-                    <h1>Quilz</h1>
+                    <Link to='/'><h1>Quilz</h1></Link>
                     <ul>
                         <li>
                             <Link to="/">Quizzes</Link>
                         </li>
                         {isAuthenticated ? (
-                            <li>
-                                <Link to="/profile">Profile</Link>
-                            </li>
+                            <>
+                                <li>
+                                    <Link to="/profile">Profile</Link>
+                                </li>
+                                <li>
+                                    <Link to="/signin" onClick={() => deleteItem("token")}>Logout</Link>
+                                </li>
+                            </>
                         ) : (
                             <>
                                 <li>
@@ -69,6 +84,11 @@ padding: 0 0.5rem;
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+& a {
+    text-decoration: none;
+    color: black;
 }
 
 & li:last-child {

@@ -5,72 +5,74 @@ import Character from "../assets/images/character-loginPage.png";
 import { Link } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 
+// Components for the login page and signup page
+
 const AuthForm = ({ onSubmit, isSignUp }) => {
-    const { register, formState: { errors }, handleSubmit } = useForm({
-        mode: 'onBlur',
-        defaultValues: {
-            email: '',
-            password: '',
-        },
-    });
+  const { register, formState: { errors }, handleSubmit } = useForm({
+    mode: 'onBlur',
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
 
-    const onSubmitForm = (data) => {
-        onSubmit(data.email, data.password);
-    };
+  const onSubmitForm = (data) => {
+    onSubmit(data.email, data.password);
+  };
 
-    return (
-        <LoginContainer>
-            <div className="container-image">
-                <img src={Character} alt="login" />
-            </div>
-            <FormContainer onSubmit={handleSubmit(onSubmitForm)}>
-                <Introduction>
-                    <h2>Play quizzes!<br /></h2>
-                    <p>
-                    Test your knowledge on topics of general culture and current events. Discover a new quiz every day!
-                    </p>
-                </Introduction>
-                <Form>
-                    <p className="title">Register </p>
-                    <p className="message">{isSignUp ? 'Signup now and get full access to our app.' : ' Signin now and get full access to our app.'} </p>
-                    <label>
-                        <input type="email"
-                            id="email"
-                            name="email"
-                            placeholder=""
-                            className='input'
-                            {...register("email", {
-                                required: "Email is required",
-                                pattern: {
-                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                    message: "Invalid email address"
-                                }
-                            })} />
-                        <span>Email</span>
-                    </label>
-                    {errors && errors.email && errors.email && <span className='error-message'>{errors.email.message}</span>}
-                    <label>
-                        <input type="password"
-                            name="password"
-                            id="password"
-                            placeholder=""
-                            className='input'
-                            {...register('password', {
-                                required: "Password is required",
-                                minLength: {
-                                    value: 8,
-                                    message: "Password must have at least 8 characters"
-                                }
-                            })} />
-                        <span>Password</span>
-                    </label>
-                    {errors && errors.password && <span className='error-message'>{errors.password.message}</span>}
-                    <button className="submit" type="submit">{isSignUp ? 'Sign up' : 'Log in'}</button>
-                </Form>
-                {isSignUp ? (<p className="signin">Already have an acount ?  <Link to="/signin"> Sign in </Link></p>) : (<p className="signin">Already have an acount ?   <Link to="/signup"> Sign up for free </Link></p>)}
-            </FormContainer>
-        </LoginContainer>
-    );
+  return (
+    <LoginContainer>
+      <div className="container-image">
+        <img src={Character} alt="login" />
+      </div>
+      <FormContainer onSubmit={handleSubmit(onSubmitForm)}>
+        <Introduction>
+          <h2>Play quizzes!<br /></h2>
+          <p>
+            Test your knowledge on topics of general culture and current events. Discover a new quiz every day!
+          </p>
+        </Introduction>
+        <Form>
+          <p className="title">Register </p>
+          <p className="message">{isSignUp ? 'Signup now and get full access to our app.' : ' Signin now and get full access to our app.'} </p>
+          <label>
+            <input type="email"
+              id="email"
+              name="email"
+              placeholder=""
+              className='input'
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Invalid email address"
+                }
+              })} />
+            <span>Email</span>
+          </label>
+          {errors && errors.email && errors.email && <span className='error-message'>{errors.email.message}</span>}
+          <label>
+            <input type="password"
+              name="password"
+              id="password"
+              placeholder=""
+              className='input'
+              {...register('password', {
+                required: "Password is required",
+                minLength: {
+                  value: 8,
+                  message: "Password must have at least 8 characters"
+                }
+              })} />
+            <span>Password</span>
+          </label>
+          {errors && errors.password && <span className='error-message'>{errors.password.message}</span>}
+          <button className="submit" type="submit">{isSignUp ? 'Sign up' : 'Log in'}</button>
+        </Form>
+        {isSignUp ? (<p className="signin">Already have an acount ?  <Link to="/signin"> Sign in </Link></p>) : (<p className="signin">Dont't have an account yet ?   <Link to="/signup"> Sign up for free </Link></p>)}
+      </FormContainer>
+    </LoginContainer>
+  );
 };
 
 const LoginContainer = styled.main`

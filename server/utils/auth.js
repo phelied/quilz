@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 
-// Configuration de la stratégie d'authentification JWT
+// Middleware for authentication with token
 passport.use(new JWTStrategy({
     secretOrKey: ACCESS_TOKEN_SECRET,
     jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme('Bearer')

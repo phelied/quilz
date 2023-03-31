@@ -20,10 +20,10 @@ router.post('/signup', validateUserInput, UserController.signup);
 // Route for logging in with email and password
 router.post('/signin', validateUserInput, UserController.signin);
 
-// Route that requires authentication using token
+// Route for getting user profile
 router.get('/profile', passport.authenticate('jwt', { session: false }), UserController.profile);
 
-// Route that requires authentication using token
+// Route for adding result to user profile
 router.post('/result', passport.authenticate('jwt', { session: false }), UserController.result);
 
 module.exports = router;

@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 const ErrorMessage = ({ message }) => {
-    return (
-        <Message>
-            <p>{message}</p>
-        </Message>
-    );
+  return (
+    <Message>
+      <p>{message}</p>
+    </Message>
+  );
 };
 
 export default ErrorMessage;
