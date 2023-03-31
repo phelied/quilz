@@ -73,7 +73,7 @@ const Quiz = () => {
     const addLeadingZero = (number) => (number > 9 ? number : `0${number}`);
 
     return (
-        <Wrapper className="quiz-container">
+        <Wrapper>
             {!showResult && listQuestions && listQuestions.length !== 0 ? (
                 <div>
                     <div>
