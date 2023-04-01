@@ -61,7 +61,6 @@ const AppContainer = styled.div`
 `;
 
 const NavLink = styled.nav`
-font-family: "Neue Haas Grotesk Display - Roman";
 font-weight: 800;
 display: flex;
 justify-content: space-between;
@@ -70,7 +69,7 @@ height: 100%;
 padding: 0 0.5rem;
 
 & h1 {
-    font-size: 1.5rem;
+    font-size: 3rem;
     font-weight: 800;
     margin: 0;
     font-family: "Caraque-Melt";

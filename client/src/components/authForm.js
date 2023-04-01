@@ -1,7 +1,7 @@
 
 import React from "react";
 import styled from "styled-components";
-import Character from "../assets/images/character-loginPage.png";
+import Character from "../assets/images/character.webp";
 import { Link } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 
@@ -26,6 +26,8 @@ const AuthForm = ({ onSubmit, isSignUp }) => {
         <img src={Character} alt="login" />
       </div>
       <FormContainer onSubmit={handleSubmit(onSubmitForm)}>
+        <div className="egg"></div>
+        <div className="egg"></div>
         <Introduction>
           <h2>Play quizzes!<br /></h2>
           <p>
@@ -34,7 +36,7 @@ const AuthForm = ({ onSubmit, isSignUp }) => {
         </Introduction>
         <Form>
           <p className="title">Register </p>
-          <p className="message">{isSignUp ? 'Signup now and get full access to our app.' : ' Signin now and get full access to our app.'} </p>
+          <p className="message">{isSignUp ? <span> <strong>Signup</strong> now and get full access to our app.</span> : <span> <strong>Signin</strong> now and get full access to our app.</span>} </p>
           <label>
             <input type="email"
               id="email"
@@ -82,9 +84,10 @@ const LoginContainer = styled.main`
     align-items: center;
     color: black;
     height: 80vh;
+    margin: 0 2rem;
 
     & .container-image {
-        height: 50%;
+      display: none;
     }
 
     & img {
@@ -94,7 +97,12 @@ const LoginContainer = styled.main`
     @media (min-width: 768px) {
         display: grid;
         grid-template-columns: 1fr 1fr;
+
+        & .container-image {
+          display: block;
+          height: 61%;
       }
+    }
 `;
 
 const FormContainer = styled.div`
@@ -102,6 +110,38 @@ const FormContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+
+    & .egg {
+      display: block;
+      position: absolute;
+      width: 179px;
+      height: 29%;
+      z-index: 0;
+      top: 35%;
+      right: 52%;
+      background-color: orange;
+      border-radius: 70% 30% 30% 20% / 60% 40% 60% 40%;
+    }
+
+    & .egg:nth-child(2) {
+      top: 75%;
+      left: 47%;
+      background-color:  #F6BA1E;
+      80% 70% 90% 30% / 90% 90% 70% 70%;
+    }
+
+    & img {
+      position : absolute;
+      width: 8rem;
+      height: 10rem;
+    bottom: 31rem;
+    right: 11rem;
+    }
+
+    & p {
+      z-index: 9999;
+    }
 
 `;
 const Introduction = styled.div`
@@ -109,6 +149,7 @@ const Introduction = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 
     & h2 {
         font-family: "Caraque-Melt";
@@ -128,10 +169,10 @@ const Form = styled.form`
     flex-direction: column;
     gap: 10px;
     max-width: 350px;
-    background-color: #fff;
     padding: 20px;
     border-radius: 20px;
     position: relative;
+    z-index: 2;
     
   & .error-message {
     color: red;

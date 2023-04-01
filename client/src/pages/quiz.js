@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import styled from "styled-components";
 import API from "../utils/API";
 import { useParams } from 'react-router-dom';
@@ -212,4 +212,4 @@ padding: 30px 60px;
   }
 `;
 
-export default Quiz;
+export default memo(Quiz);
