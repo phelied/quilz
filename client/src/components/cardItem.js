@@ -10,7 +10,7 @@ const CardItem = ({ quiz }) => {
   };
 
   return (
-    <Card onClick={() => handleQuizClick(quiz.id)} key={quiz.topic}>
+    <Card onClick={() => handleQuizClick(quiz.id)}>
       <div className="flip-card-inner">
         <div className="flip-card-front">
           <p className="title">{quiz.topic}</p>

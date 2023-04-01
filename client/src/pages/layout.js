@@ -93,6 +93,7 @@ padding: 0 0.5rem;
 & li:last-child {
     border: 1px solid #fff;
     border-radius: 0.75rem;
+background-color: orange;
     padding: 0.25rem 0.5rem;
 }
 

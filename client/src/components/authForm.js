@@ -161,6 +161,7 @@ const Introduction = styled.div`
         background-cwlip: text;
         -webkit-background-clip: text;
         color: transparent;
+        font-stretch: expanded;
     }
 `;
 
@@ -216,6 +217,11 @@ const Form = styled.form`
   & .message, .signin {
     color: rgba(88, 87, 87, 0.822);
     font-size: 14px;
+    margin-top: 0;
+  }
+
+  & .message > span > strong {
+    color: black;
   }
   
  & .signin {
